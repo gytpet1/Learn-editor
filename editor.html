@@ -1,0 +1,368 @@
+<!doctype html>
+<!--Lukas and Eimantas   Learn.xyz team-->
+<html>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+		<script>
+		  $(location).attr('href');
+		  $(location).attr('pathname');
+		</script>
+<head>
+		<title>Learn.xyz Tutorial</title>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='initial-scale=1.0'>
+		<meta http-equiv='X-UA-Compatible' content='IE=9' />
+		<link type='text/css' rel='stylesheet' href='https://necolas.github.io/normalize.css/3.0.1/normalize.css'/>
+		<script type='text/javascript' src='https://code.jquery.com/jquery-latest.min.js'></script>
+		<script src='https://raw.github.com/niklasvh/html2canvas/gh-pages/build/html2canvas.js'></script>
+		<script src='https://codemirror.net/lib/codemirror.js'></script>
+		<script src='https://codemirror.net/mode/xml/xml.js'></script>
+		<script src='https://codemirror.net/mode/javascript/javascript.js'></script>
+		<script src='https://codemirror.net/mode/css/css.js'></script>
+		<script src='https://codemirror.net/mode/htmlmixed/htmlmixed.js'></script>
+		<link rel='stylesheet' href='https://codemirror.net/lib/codemirror.css'>
+		<link rel='stylesheet' href='https://codemirror.net/doc/docs.css'>
+		<script src='https://codemirror.net/mode/htmlmixed/htmlmixed.js'></script>
+		<script src='https://codemirror.net/addon/edit/closetag.js'></script>
+		<script src='https://codemirror.net/addon/edit/matchbrackets.js'></script>
+		<script src='https://codemirror.net/addon/selection/active-line.js'></script>
+		<style type='text/css'>	
+		  iframe {
+			width: 49%;
+			float: left;
+			height: 300px;
+			/* border: 1px solid black;
+			border-left: 0; */
+		  }
+		</style>
+		<script>
+			function activeHtml(){
+				document.getElementById("activecss").style.display = "none";
+				document.getElementById("activehtml").style.display = "block";
+				document.getElementById("activeHtml").style.background = "#d6d6d6";
+				document.getElementById("activeCss").style.background = "#8c8c8c";
+			}
+			function activeCss(){
+				document.getElementById("activehtml").style.display = "none";
+				document.getElementById("activecss").style.display = "block";
+				document.getElementById("activeCss").style.background = "#d6d6d6";
+				document.getElementById("activeHtml").style.background = "#8c8c8c";
+			}
+		</script>
+</head>
+	<body>
+		<div id="container" onload="activeHtml()">
+						
+					<iframe id="tutorial" src="https://learn.xyz"></iframe>
+					<div id="input">
+							<div id="navbar">
+									<div id="holder">
+										<ul>
+											<li><a id="activeHtml" onclick="activeHtml()">Index.html</a></li>
+											<li><a id="activeCss" onclick="activeCss()">Style.css</a></li> 
+										</ul>
+									</div>	
+								</div>	
+								
+							<div id="activehtml" ><textarea id='html' name='html'><p>html</p></textarea></div>
+							<div id="activecss"><textarea id='css' name='css'>p { color:red; }</textarea></div>
+							<script type='text/javascript'>
+								window.onload = function(){
+									activeHtml();
+									};
+								
+								//debugger;
+								  $('#preview').val("");
+								  // Append JS library to HTML <head>
+								  function appendJSLib(txt) {
+									var textArea = editor.getValue();
+									var searchText = textArea.search('<head>');
+										searchText.append("<style>")
+									if(searchText>0) {
+									  txt = '<head>'+'\n'+txt;
+									  var updatedTextArea = textArea.replace('<head>',txt);
+									  editor.setValue(updatedTextArea);
+									}
+									else {
+									  reset();
+									  alert('WARNING! The &lt;head&gt tag seems to be missing in your HTML. Although your code may still work, we highly recommened that you have a valid HTML syntax. Please refer to the new document of correct formatted');
+									  txt = txt+textArea;
+									  htmlEditor.setLine(0, txt);
+									  return false;
+									}
+								  }
+								  function appendJSLib(csstxt) {
+									var textArea = csseditor.getValue();
+									var searchText = textArea.search('<head>');
+										searchText.append("<style>")
+									if(searchText>0) {
+									  txt = '<head>'+'\n'+txt;
+									  var updatedTextArea = textArea.replace('<head>',txt);
+									  csseditor.setValue(updatedTextArea);
+									}
+									else {
+									  reset();
+									  alert('WARNING! The &lt;head&gt tag seems to be misswing in your HTML. Although your code may still work, we highly recommened that you have a valid HTML syntax. Please refer to the new document of correct formatted');
+									  txt = txt+textArea;
+									  htmlEditor.setLine(0, txt);
+									  return false;
+									}
+								  }
+								  // Append script to HTML <body>
+								  function appendScript(txt) {
+									var textArea = editor.getValue();
+									var searchText = textArea.search('<body>');
+									if(searchText>0) {
+									  txt = '<body>'+'\n'+txt;
+									  var updatedTextArea = textArea.replace('<body>',txt);
+									  editor.setValue(updatedTextArea);
+									}
+									else {
+									  reset();
+									  alert('WARNING! The <body> tag seems to be missing in your HTML. Although your code may still work, we highly recommened that you have a valid HTML syntax. Please refer to the new document of correct formatted');
+									  txt = txt+textArea;
+									  htmlEditor.setLine(0, txt);
+									  return false;
+									}
+								  }
+								  function appendCssScript(csstxt) {
+									var textArea = csseditor.getValue();
+									var searchText = textArea.search('<body>');
+									if(searchText>0) {
+									  csstxt = '<body>'+'\n'+csstxt;
+									  var updatedTextArea = textArea.replace('<body>',csstxt);
+									  csseditor.setValue(updatedTextArea);
+									}
+									else {
+									  reset();
+									  alert('WARNING! The <body> tag seems to be missing in your HTML. Although your code may still work, we highly recommened that you have a valid HTML syntax. Please refer to the new document of correct formatted');
+									  csstxt = csstxt+textArea;
+									  htmlEditor.setLine(0, csstxt);
+									  return false;
+									}
+								  }
+								  var delay;
+							
+								  // Initialize CodeMirror editor
+								  var editor = CodeMirror.fromTextArea(document.getElementById('html'), {
+									mode: 'text/html',
+									tabMode: 'indent',
+									styleActiveLine: true,
+									lineNumbers: true,
+									lineWrapping: true,
+									autoCloseTags: true
+								  });
+								  var csseditor = CodeMirror.fromTextArea(document.getElementById('css'), {
+									mode: 'text/css',
+									tabMode: 'indent',
+									styleActiveLine: true,
+									lineNumbers: true,
+									lineWrapping: true,
+									autoCloseTags: true
+								  });
+								  
+								  // Live preview
+								  editor.on('change', function() {
+									clearTimeout(delay);
+									delay = setTimeout(updatePreview, 300);
+								  });
+								  csseditor.on('change', function() {
+									clearTimeout(delay);
+									delay = setTimeout(updatePreview, 300);
+								  });
+							
+								  function updatePreview() {
+									var previewFrame = document.getElementById('preview');
+									var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+									preview.open();
+									preview.write(editor.getValue());
+									preview.close();
+									var iFrameObj = $('#preview');
+									iFrameObj.contents().find('head').append('<style>' + csseditor.getValue() + '</style>');
+								  }
+								  setTimeout(updatePreview, 300);
+								 
+								</script>
+						</div>
+						<div id="output">
+								<div class="name">
+									<p>Output:</p>
+								</div>
+							<iframe id="preview"></iframe>
+						
+						</div>
+					
+					
+			</div>					
+		</div>
+	</body>
+</html>
+
+<style>
+.name {
+	min-height: 41px;
+	text-align: left;
+	vertical-align: middle;
+	background:#2b2b2b;
+}
+.name p {
+	margin: 0;
+	padding: 10px 10px 0 0;
+}
+.CodeMirror {
+	width:100%;
+	height:95.3%;
+	margin-bottom: -7%;
+}
+#tutorial {
+	height: 100%;
+	width: 33%;
+	min-width: 270px;
+	float: left;
+	/* margin-bottom: ; */
+}
+ol {
+	max-height: 100%;
+	/* min-height: 100%; */
+}
+div#holder {
+	margin-left: -1px;
+	display: -webkit-box;
+}
+div#outputHeight {
+	height:100%;
+}
+
+#activecss {
+	height: 100%
+}
+#activehtml {
+	height: 100%
+}
+#activeCss {
+	background-color: #8c8c8c;
+}
+	
+#activeHtml {
+	background-color: #d6d6d6;
+}
+#html {
+	color:#333;
+	width:100%;
+	height:100%;
+	background: #d6d6d6;
+	/* padding: 20px 20px; */
+}
+#css {
+	color:#333;
+	width:100%;
+	height:100%;
+	background: #d6d6d6;
+	display:none;
+	/* padding: 20px 20px; */
+}
+
+#input {
+	width:33%;
+	min-width: 270px;
+	height:100%;
+	float:left;
+	text-align: left;
+	margin: 0 0 0 1px;
+}
+#output {
+	width:33%;
+	height:100%;
+	background-color:#333;
+	float:left;
+}
+#container {
+	width:99%;
+	height:100%;
+}
+
+.bt-tab {
+	min-width: 75px;
+	min-height: 25px;
+	padding: 12px 17.5px 12px 17.5px;
+	background-color:lightskyblue;
+	text-align:center;
+	margin: 5px 2px 0 2px;
+	vertical-align: middle;
+	border-radius: 17px 17px 0 0;
+}
+.bt-tab:active {
+	background-color:aquamarine;
+}
+.nav {
+	display:-webkit-box;
+	width:50%;
+}
+#navbar {
+	width: 100%;
+	margin: 0 auto;
+	float:left;
+}
+#navbar #holder ul {
+	display: -webkit-box;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#navbar #holder ul li a {
+	text-decoration: none;
+	float: left;
+	margin: 0 5px 0 0;
+	border: 1px solid #333;
+	border-bottom: none;
+	padding:8px 10px 8px 10px;
+	min-width: 75px;
+	text-align: center;
+	display: block;
+	background-color: #d6d6d6;
+	color:#2b2b2b;
+	border-radius: 15px 15px 0px 0px;
+}
+
+#navbar #holder ul li a:hover {
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+}
+
+#holder ul li a#onlink {
+	background: #FFF;
+	color: #000;
+	border-bottom: 1px solid #fff;
+}
+
+#holder ul li a#onlink:hover {
+	background: #fff;
+	color: #d6d6d6;
+	text-shadow: 1px 1px 1px #000;
+}
+html,body,table,div.content{
+    background: #2b2b2b;
+    color: white;
+	border:0;
+	height:100%;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+iframe {
+	background: #2b2b2b;
+    color: white;
+	border:0;
+	height:100%;
+	min-width:33%;
+	margin:0 0 5px 0;
+	padding:0;
+}
+#preview {
+	width:99.9%;
+	height: 95%;
+	min-width: 270px;
+}
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+</style>
