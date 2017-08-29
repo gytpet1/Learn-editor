@@ -26,32 +26,34 @@
 		<script src='https://codemirror.net/addon/edit/matchbrackets.js'></script>
 		<script src='https://codemirror.net/addon/selection/active-line.js'></script>
 		<style type='text/css'>	
-		  iframe {
+		  /* iframe {
 			width: 49%;
 			float: left;
 			height: 300px;
+		  } */
 			/* border: 1px solid black;
 			border-left: 0; */
-		  }
+
+
 		</style>
 		<script>
 			function activeHtml(){
 				document.getElementById("activecss").style.display = "none";
 				document.getElementById("activehtml").style.display = "block";
 				document.getElementById("activeHtml").style.background = "#d6d6d6";
-				document.getElementById("activeCss").style.background = "#8c8c8c";
+				document.getElementById("activeCss").style.background = "#c1c1c1";
 			}
 			function activeCss(){
 				document.getElementById("activehtml").style.display = "none";
 				document.getElementById("activecss").style.display = "block";
 				document.getElementById("activeCss").style.background = "#d6d6d6";
-				document.getElementById("activeHtml").style.background = "#8c8c8c";
+				document.getElementById("activeHtml").style.background = "#c1c1c1";
 			}
 		</script>
 </head>
 	<body>
 		<div id="container" onload="activeHtml()">
-						
+				
 					<iframe id="tutorial" src="https://learn.xyz"></iframe>
 					<div id="input">
 							<div id="navbar">
@@ -185,24 +187,28 @@
 						</div>
 						<div id="output">
 								<div class="name">
-									<p>Output:</p>
+									<p></p>
 								</div>
 							<iframe id="preview"></iframe>
 						
-						</div>
+
 					
-					
-			</div>					
+			</div>
+			
 		</div>
+	</div>
+	<!-- <div class="footer">
+
+	</div> -->
 	</body>
 </html>
 
 <style>
 .name {
-	min-height: 41px;
+	min-height: 40px;
 	text-align: left;
 	vertical-align: middle;
-	background:#2b2b2b;
+	/* background:#0097ff; */
 }
 .name p {
 	margin: 0;
@@ -210,12 +216,16 @@
 }
 .CodeMirror {
 	width:100%;
-	height:95.3%;
-	margin-bottom: -7%;
+	height:100%;
+	margin-bottom: 0;
+}
+.CodeMirror-scroll {
+	padding-bottom: 0;
 }
 #tutorial {
+	margin-top: 40px;
 	height: 100%;
-	width: 33%;
+	width: 32%;
 	min-width: 270px;
 	float: left;
 	/* margin-bottom: ; */
@@ -225,11 +235,10 @@ ol {
 	/* min-height: 100%; */
 }
 div#holder {
-	margin-left: -1px;
 	display: -webkit-box;
 }
 div#outputHeight {
-	height:100%;
+	height: 100%;
 }
 
 #activecss {
@@ -262,29 +271,28 @@ div#outputHeight {
 }
 
 #input {
-	width:33%;
+	width: 32%;
 	min-width: 270px;
-	height:100%;
+	height: 100%;
 	float:left;
 	text-align: left;
-	margin: 0 0 0 1px;
+	margin: 0
 }
 #output {
-	width:33%;
+	width:32%;
 	height:100%;
-	background-color:#333;
+	/* background-color:#0097ff; */
 	float:left;
 }
 #container {
-	width:99%;
+	width:100%;
 	height:100%;
 }
-
 .bt-tab {
 	min-width: 75px;
 	min-height: 25px;
 	padding: 12px 17.5px 12px 17.5px;
-	background-color:lightskyblue;
+	background-color:#0097ff;
 	text-align:center;
 	margin: 5px 2px 0 2px;
 	vertical-align: middle;
@@ -312,7 +320,7 @@ div#outputHeight {
 	text-decoration: none;
 	float: left;
 	margin: 0 5px 0 0;
-	border: 1px solid #333;
+	/* border: 1px solid #333; */
 	border-bottom: none;
 	padding:8px 10px 8px 10px;
 	min-width: 75px;
@@ -322,7 +330,9 @@ div#outputHeight {
 	color:#2b2b2b;
 	border-radius: 15px 15px 0px 0px;
 }
-
+.footer {
+	height: 25%;
+}
 #navbar #holder ul li a:hover {
 	color: #fff;
 	text-shadow: 1px 1px 1px #000;
@@ -340,7 +350,7 @@ div#outputHeight {
 	text-shadow: 1px 1px 1px #000;
 }
 html,body,table,div.content{
-    background: #2b2b2b;
+    /* background: #0097ff; */
     color: white;
 	border:0;
 	height:100%;
@@ -349,7 +359,7 @@ html,body,table,div.content{
 	width:100%;
 }
 iframe {
-	background: #2b2b2b;
+	background: #fff;
     color: white;
 	border:0;
 	height:100%;
@@ -358,11 +368,14 @@ iframe {
 	padding:0;
 }
 #preview {
-	width:99.9%;
-	height: 95%;
+	width:100%;
+	height: 100%;
 	min-width: 270px;
 }
 [contenteditable]:focus {
     outline: 0px solid transparent;
+}
+#tutorial, #input {
+	margin-right: 10px;
 }
 </style>
